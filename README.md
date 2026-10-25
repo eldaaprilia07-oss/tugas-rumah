@@ -3,7 +3,7 @@ Website portofolio pribadi yang saya buat di Kelas Industri UBIG
 (Paket 1, Minggu 01 sampai 05).
 Website ini tampil rapi di ponsel, tablet, dan laptop.
 ## Tampilan
-![Tampilan beranda portofolio](img/proyek-jadwal.png)
+![Tampilan beranda portofolio](img/Screenshot%202026-10-25%20184033.png)
 ## Fitur
 - Halaman **Beranda** berisi profil, hobi, cita-cita, keahlian, dan
 jadwal belajar
@@ -16,4 +16,4 @@ jadwal belajar
 - Git dan GitHub
 ## Tautan
 - Website: menyusul setelah *deploy* ke Vercel
-- Dibuat oleh: Andi Pratama, SMK Mitra
+- Dibuat oleh: Alena Elda Aprilia, SMK Brantas Karangkates
