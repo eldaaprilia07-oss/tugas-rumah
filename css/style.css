@@ -1,4 +1,26 @@
-/* Gaya portofolio Andi Pratama
+/* Variabel warna tema terang */
+:root {
+  --warna-utama: #1D3557;
+  --warna-judul: #1D3557;
+  --warna-aksen: #E63946;
+  --warna-tautan: #E63946;
+  --warna-latar: #F1FAEE;
+  --warna-teks: #333333;
+  --warna-kartu: #FFFFFF;
+  --warna-garis: #DDDDDD;
+}
+
+/* Tema gelap */
+body.gelap {
+  --warna-utama: #0B1526;
+  --warna-judul: #A8DADC;
+  --warna-tautan: #FF8A8A;
+  --warna-latar: #121A24;
+  --warna-teks: #E3E8EE;
+  --warna-kartu: #1C2836;
+  --warna-garis: #34465A;
+}
+/* Gaya portofolio Alena Elda Aprilia
    Palet: #1D3557 (utama), #E63946 (aksen), #F1FAEE (latar)
    Huruf: Poppins (judul), Inter (isi)
    Tata letak: mobile first, titik ubah 768px (tablet) dan 1024px (laptop) */
@@ -261,4 +283,66 @@ footer a {
   .hero h2 {
     font-size: 2.75rem;
   }
+}
+/* MODE GELAP */
+body.gelap {
+  background-color: #121A24;
+  color: #E3E8EE;
+}
+
+body.gelap header,
+body.gelap footer {
+  background-color: #0B1526;
+  color: #FFFFFF;
+}
+
+body.gelap .kartu,
+body.gelap section,
+body.gelap article {
+  background-color: #1C2836;
+  color: #E3E8EE;
+  border-color: #34465A;
+}
+
+body.gelap h1,
+body.gelap h2,
+body.gelap h3,
+body.gelap p,
+body.gelap li,
+body.gelap label {
+  color: #E3E8EE;
+}
+
+body.gelap a {
+  color: #FF8A8A;
+}
+
+body.gelap input,
+body.gelap textarea,
+body.gelap select {
+  background-color: #263547;
+  color: #FFFFFF;
+  border-color: #52657A;
+}
+.keterangan {
+  font-size: 0.875rem;
+}
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
 }
