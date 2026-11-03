@@ -1,22 +1,11 @@
-const tombolTema = document.querySelector("#tombolTema");
+const tombolTema = document.getElementById("tombolTema");
 
-if (tombolTema) {
-    const temaTersimpan = localStorage.getItem("tema");
-    const temaAwal = temaTersimpan
-        ? temaTersimpan === "gelap"
-        : window.matchMedia("(prefers-color-scheme: dark)").matches;
+tombolTema.addEventListener("click", function () {
+    document.body.classList.toggle("mode-gelap");
 
-    function aturTema(modeGelap) {
-        document.body.classList.toggle("dark-mode", modeGelap);
-        tombolTema.textContent = modeGelap ? "☀️ Mode Terang" : "🌙 Mode Gelap";
-        tombolTema.setAttribute("aria-pressed", String(modeGelap));
+    if (document.body.classList.contains("mode-gelap")) {
+        tombolTema.innerHTML = "☀️ Mode Terang";
+    } else {
+        tombolTema.innerHTML = "🌙 Mode Gelap";
     }
-
-    aturTema(temaAwal);
-
-    tombolTema.addEventListener("click", () => {
-        const modeGelap = !document.body.classList.contains("dark-mode");
-        aturTema(modeGelap);
-        localStorage.setItem("tema", modeGelap ? "gelap" : "terang");
-    });
-}
+});

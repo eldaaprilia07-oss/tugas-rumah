@@ -420,3 +420,45 @@ body.gelap li,
 body.gelap a {
   color: white;
 }
+/* MODE GELAP */
+body.mode-gelap {
+    background-color: #121212;
+    color: white;
+}
+
+/* Bagian header */
+body.mode-gelap header {
+    background-color: #111827;
+}
+
+/* Bagian kartu */
+body.mode-gelap .kartu {
+    background-color: #1f2937;
+    color: white;
+}
+
+/* Judul */
+body.mode-gelap h1,
+body.mode-gelap h2,
+body.mode-gelap h3 {
+    color: white;
+}
+
+/* Paragraf dan label */
+body.mode-gelap p,
+body.mode-gelap label {
+    color: #e5e7eb;
+}
+
+/* Kolom input */
+body.mode-gelap input {
+    background-color: #374151;
+    color: white;
+    border: 1px solid #6b7280;
+}
+
+/* Footer */
+body.mode-gelap footer {
+    background-color: #111827;
+    color: white;
+}
