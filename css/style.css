@@ -1,25 +1,4 @@
-/* Variabel warna tema terang */
-:root {
-  --warna-utama: #1D3557;
-  --warna-judul: #1D3557;
-  --warna-aksen: #E63946;
-  --warna-tautan: #E63946;
-  --warna-latar: #F1FAEE;
-  --warna-teks: #333333;
-  --warna-kartu: #FFFFFF;
-  --warna-garis: #DDDDDD;
-}
 
-/* Tema gelap */
-body.gelap {
-  --warna-utama: #0B1526;
-  --warna-judul: #A8DADC;
-  --warna-tautan: #FF8A8A;
-  --warna-latar: #121A24;
-  --warna-teks: #E3E8EE;
-  --warna-kartu: #1C2836;
-  --warna-garis: #34465A;
-}
 /* Gaya portofolio Alena Elda Aprilia
    Palet: #1D3557 (utama), #E63946 (aksen), #F1FAEE (latar)
    Huruf: Poppins (judul), Inter (isi)
@@ -345,4 +324,99 @@ main {
 
 footer {
     margin-top: auto;
+}
+body.gelap {
+    background-color: #121212;
+    color: white;
+}
+
+body.gelap main {
+    background-color: #1e1e1e;
+}
+
+body.gelap .kartu {
+    background-color: #2c2c2c;
+    color: white;
+}
+
+/* MODE GELAP */
+body.gelap {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Header */
+body.gelap header {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Navigasi */
+body.gelap nav {
+  background-color: #252525;
+}
+
+body.gelap nav a {
+  color: white;
+}
+
+/* Bagian utama */
+body.gelap main,
+body.gelap section {
+  background-color: #121212;
+  color: white;
+}
+
+/* Kartu */
+body.gelap .card,
+body.gelap .profil,
+body.gelap .kontak {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Footer */
+body.gelap footer {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Input dan textarea */
+body.gelap input,
+body.gelap textarea {
+  background-color: #252525;
+  color: white;
+  border: 1px solid #666;
+}
+
+/* Tombol */
+body.gelap button {
+  cursor: pointer;
+}
+
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.gelap {
+  background-color: #121212 !important;
+  color: white !important;
+}
+
+body.gelap header,
+body.gelap nav,
+body.gelap footer,
+body.gelap section,
+body.gelap main {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+body.gelap h1,
+body.gelap h2,
+body.gelap h3,
+body.gelap p,
+body.gelap li,
+body.gelap a {
+  color: white;
 }
