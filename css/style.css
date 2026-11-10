@@ -462,3 +462,51 @@ body.mode-gelap footer {
     background-color: #111827;
     color: white;
 }
+/* Gambar menyesuaikan ukuran layar */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tampilan tablet dan HP */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-laptop {
+        display: none;
+    }
+
+    .menu-ponsel {
+        display: block;
+    }
+
+    #daftar-proyek {
+        grid-template-columns: 1fr;
+    }
+
+    .kartu {
+        width: 100%;
+    }
+}
+
+/* Tampilan HP kecil */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
