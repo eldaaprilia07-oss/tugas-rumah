@@ -9,29 +9,37 @@ tombolTema.addEventListener("click", function () {
         tombolTema.innerHTML = "Mode Gelap";
     }
 });
-// 1. DAFTAR KEAHLIAN
-const skills = [
-    { nama: "HTML", level: "Menengah" },
-    { nama: "CSS", level: "Menengah" },
-    { nama: "Git dan GitHub", level: "Dasar" },
-    { nama: "Desain poster dengan Canva", level: "Mahir" }
-];
 
-skills.push({ nama: "JavaScript", level: "Dasar" });
-
+// 1. Daftar keahlian (halaman Beranda), data dari
+// data/keahlian.json
 const daftarSkill = document.querySelector("#daftar-skill");
 const jumlahSkill = document.querySelector("#jumlah-skill");
 
-if (daftarSkill && jumlahSkill) {
-    skills.forEach((skill) => {
-        const item = document.createElement("li");
-        item.textContent = `${skill.nama} (${skill.level})`;
-        daftarSkill.appendChild(item);
-    });
+async function muatKeahlian() {
+  try {
+    const response = await fetch("data/keahlian.json");
+    if (!response.ok) {
+      throw new Error(`Status ${response.status}`);
+    }
+    const skills = await response.json();
 
-    jumlahSkill.textContent =
-        `Ada ${skills.length} keahlian yang sedang saya kembangkan.`;
-}// 3. PENGHITUNG KARAKTER
+    skills.forEach((skill) => {
+      const item = document.createElement("li");
+      item.textContent = `${skill.nama} (${skill.level})`;
+      daftarSkill.appendChild(item);
+    });
+    jumlahSkill.textContent = `Ada ${skills.length} keahlian yang sedang saya kembangkan.`;
+  } catch (error) {
+    jumlahSkill.textContent = "Daftar keahlian gagal dimuat.";
+    console.error(error);
+  }
+}
+
+if (daftarSkill) {
+  muatKeahlian();
+}
+
+// 3. PENGHITUNG KARAKTER
 const kotakPesan = document.querySelector("#pesan");
 const hitungKarakter = document.querySelector("#hitung-karakter");
 
@@ -44,50 +52,25 @@ if (kotakPesan && hitungKarakter) {
 
 
 // 4. DATA ENAM PROYEK
-const proyek = [
-    {
-        judul: "Halaman Profil Pertama",
-        kategori: "HTML",
-        gambar: "img/Screenshot 2026-10-25 184033.png",
-        alt: "Tangkapan layar halaman profil",
-        deskripsi: "Halaman web pertama saya yang dibuat dengan HTML dasar."
-    },
-    {
-        judul: "Form Kontak",
-        kategori: "HTML",
-        gambar: "img/Screenshot kontak.png",
-        alt: "Tangkapan layar form kontak",
-        deskripsi: "Form kontak dengan label dan validasi bawaan browser."
-    },
-    {
-        judul: "Tabel Jadwal Belajar",
-        kategori: "HTML",
-        gambar: "img/Screenshot tabel.png",
-        alt: "Tangkapan layar tabel jadwal belajar",
-        deskripsi: "Jadwal belajar mingguan menggunakan tabel HTML."
-    },
-    {
-        judul: "Portofolio Responsif",
-        kategori: "CSS",
-        gambar: "img/portofolio responsif.png",
-        alt: "Tangkapan layar portofolio responsif",
-        deskripsi: "Website yang menyesuaikan tampilan ponsel dan laptop."
-    },
-    {
-        judul: "Kalkulator Nilai Rapor",
-        kategori: "JavaScript",
-        gambar: "img/proyek kalkulator.png",
-        alt: "Tangkapan layar kalkulator nilai",
-        deskripsi: "Program untuk menghitung rata-rata dan predikat nilai."
-    },
-    {
-        judul: "Lima Soal Logika",
-        kategori: "JavaScript",
-        gambar: "img/proyek logika.png",
-        alt: "Tangkapan layar latihan logika",
-        deskripsi: "Lima fungsi logika yang dibuat menggunakan JavaScript."
+let proyek = [];
+async function muatProyek() {
+  try {
+    jumlahProyek.textContent = "Memuat proyek...";
+
+    const response = await fetch("data/proyek.json");
+
+    if (!response.ok) {
+      throw new Error(`Status ${response.status}`);
     }
-];
+
+    proyek = await response.json();
+    tampilkanProyek(proyek);
+
+  } catch (error) {
+    jumlahProyek.textContent = "Data proyek gagal dimuat.";
+    console.error(error);
+  }
+}
 
 
 // 5. MENAMPILKAN KARTU PROYEK
@@ -147,10 +130,55 @@ function pasangFilter(idTombol, kategori) {
 
 // Jalankan filter hanya pada halaman Proyek
 if (daftarProyek && jumlahProyek) {
-    tampilkanProyek(proyek);
+    muatProyek();
 
     pasangFilter("#filter-semua", "Semua");
     pasangFilter("#filter-html", "HTML");
     pasangFilter("#filter-css", "CSS");
     pasangFilter("#filter-javascript", "JavaScript");
+}
+
+// 5. Repositori GitHub terbaru (halaman Proyek)
+const username = "eldaaprilia07-oss";
+const alamatRepo = `https://api.github.com/users/${username}/repos`;
+const pilihan = "?sort=updated&per_page=6";
+
+const daftarRepo = document.querySelector("#daftar-repo");
+const statusRepo = document.querySelector("#status-repo");
+
+
+async function ambilRepo() {
+    statusRepo.textContent = "Memuat...";
+
+    try {
+        const response = await fetch(alamatRepo + pilihan);
+
+        if (!response.ok) {
+            throw new Error(`Status ${response.status}`);
+        }
+
+        const repos = await response.json();
+
+        repos.forEach((repo) => {
+            const item = document.createElement("li");
+            const tautan = document.createElement("a");
+
+            tautan.href = repo.html_url;
+            tautan.target = "_blank";
+            tautan.textContent = `${repo.name} (${repo.language || "Tidak diketahui"}, ${repo.stargazers_count} bintang)`;
+
+            item.appendChild(tautan);
+            daftarRepo.appendChild(item);
+        });
+
+        statusRepo.textContent = `${repos.length} repositori yang terakhir diperbarui:`;
+
+    } catch (error) {
+        statusRepo.textContent = "Maaf, daftar repositori gagal dimuat. Periksa username atau coba lagi nanti.";
+        console.error(error);
+    }
+}
+
+if (daftarRepo) {
+    ambilRepo();
 }
