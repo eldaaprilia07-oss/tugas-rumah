@@ -510,3 +510,18 @@ img {
         max-width: 100%;
     }
 }
+/* Tombol filter proyek */
+.filter-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.filter-buttons button {
+    width: 100%;
+    padding: 12px 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 0;
+}
